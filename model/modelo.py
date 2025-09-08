@@ -8,7 +8,7 @@ def simular_dado(lado):
         favorables = 0
 
         for _ in range(n):
-            resultado = random.randint(0, 1, 2, 3, 4, 5)
+            resultado = random.randint(1,6)
             if resultado == lado:
                 favorables += 1
 

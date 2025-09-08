@@ -10,16 +10,12 @@ class App:
         frm_opts.grid(row=0, column=0, sticky="ew")
 
         ttk.Label(frm_opts, text="Selecciona lado:").grid(row=0, column=0, sticky="w")
-        self.lado_var = tk.IntVar(value=0)
-        ttk.Radiobutton(frm_opts, text="1", variable=self.lado_var, value=0).grid(row=0, column=1)
-        ttk.Radiobutton(frm_opts, text="2", variable=self.lado_var, value=1).grid(row=0, column=2)
-        tk.Radiobutton(frm_opts, text="3", variable=self.lado_var, value=2).grid(row=0, column=1)
-        ttk.Radiobutton(frm_opts, text="4", variable=self.lado_var, value=3).grid(row=0, column=2)
-        tk.Radiobutton(frm_opts, text="5", variable=self.lado_var, value=4).grid(row=0, column=1)
-        ttk.Radiobutton(frm_opts, text="6", variable=self.lado_var, value=5).grid(row=0, column=2)
+        self.lado_var = tk.IntVar(value=1)
+        for i in range(1, 7):
+            ttk.Radiobutton(frm_opts, text=str(i), variable=self.lado_var, value=i).grid(row=0, column=i)
 
         self.btn_simular = ttk.Button(frm_opts, text="Simular")
-        self.btn_simular.grid(row=0, column=3, padx=8)
+        self.btn_simular.grid(row=0, column=7, padx=8)
 
         frm_res = ttk.Frame(root, padding=(10,0,10,10))
         frm_res.grid(row=1, column=0, sticky="nsew")
@@ -36,9 +32,9 @@ class App:
     def bind_simular(self, callback):
         self.btn_simular.config(command=callback)
 
-    def mostrar_resultado(self, lado_str, lanzamientos, probabilidades):
+    def mostrar_resultado(self, lado, lanzamientos, probabilidades):
         self.text.delete("1.0", tk.END)
-        self.text.insert(tk.END, f"Simulando para {lado_str}...\n\n")
+        self.text.insert(tk.END, f"Simulando para lado {lado}...\n\n")
         header = f"{'Lanzamientos':>12} | {'Probabilidad (%)':>16}\n"
         self.text.insert(tk.END, header)
         self.text.insert(tk.END, "-" * 32 + "\n")
