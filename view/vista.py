@@ -9,7 +9,7 @@ class App:
         frm_opts = ttk.Frame(root, padding=10)
         frm_opts.grid(row=0, column=0, sticky="ew")
 
-        ttk.Label(frm_opts, text="Selecciona lado:").grid(row=0, column=0, sticky="w")
+        ttk.Label(frm_opts, text="Selecciona lado para los dos dados:").grid(row=0, column=0, sticky="w")
         self.lado_var = tk.IntVar(value=1)
         for i in range(1, 7):
             ttk.Radiobutton(frm_opts, text=str(i), variable=self.lado_var, value=i).grid(row=0, column=i)
