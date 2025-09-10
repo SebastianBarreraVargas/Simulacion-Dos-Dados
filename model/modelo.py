@@ -8,8 +8,9 @@ def simular_dado(lado):
         favorables = 0
 
         for _ in range(n):
-            resultado = random.randint(1,6)
-            if resultado == lado:
+            resultado1 = random.randint(1,6)
+            resultado2 = random.randint(1,6)
+            if resultado1 & resultado2 == lado:
                 favorables += 1
 
         probabilidad = (favorables / n) * 100
